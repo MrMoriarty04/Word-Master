@@ -36,6 +36,13 @@ body{
     height: 90px;
     border: solid rgb(205, 205, 205) 5px;
     margin: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    font-size:55px;
+    
 }
 
 
@@ -55,7 +62,7 @@ body{
   /* visibility hidden means the item is still there and taking up space
      but just not shown. display: none doesn't take up space */
   .hidden {
-    visibility: hidden;
+    visibility: visible;
   }
   
   .info-bar {
