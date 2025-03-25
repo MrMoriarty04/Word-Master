@@ -11,4 +11,6 @@ When you enter a word and press Enter, you will receive one of three results:_
 
 _If the player correctly guesses the secret word, they win, and the game ends and if the player fails to guess it within six tries, they lose._
 
+you can try the game through the following link: https://mrmoriarty04.github.io/Word-Master/
+
 _It was an amazing learning journey_ ! 🤍🚀🚀
