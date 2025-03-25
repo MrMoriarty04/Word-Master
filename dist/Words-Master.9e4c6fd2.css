@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
+}
+
+.bage {
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.header {
+  border-bottom: 3px solid #000;
+  justify-content: center;
+  padding-bottom: 35px;
+  font-family: sans-serif;
+  font-size: 50px;
+  font-weight: 600;
+  display: flex;
+}
+
+.game-area {
+  padding-top: 60px;
+}
+
+.word-row {
+  justify-content: center;
+  display: flex;
+}
+
+.letter-field {
+  text-align: center;
+  border: 5px solid #cdcdcd;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 90px;
+  margin: 10px;
+  font-size: 55px;
+  font-weight: bolder;
+  display: flex;
+}
+
+.spiral {
+  font-size: 50px;
+  animation: 1.5s linear infinite spin;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.info-bar {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+@keyframes rainbow {
+  100%, 0% {
+    color: red;
+  }
+
+  8% {
+    color: #ff7f00;
+  }
+
+  16% {
+    color: #ff0;
+  }
+
+  25% {
+    color: #7fff00;
+  }
+
+  33% {
+    color: #0f0;
+  }
+
+  41% {
+    color: #00ff7f;
+  }
+
+  50% {
+    color: #0ff;
+  }
+
+  58% {
+    color: #007fff;
+  }
+
+  66% {
+    color: #00f;
+  }
+
+  75% {
+    color: #7f00ff;
+  }
+
+  83% {
+    color: #f0f;
+  }
+
+  91% {
+    color: #ff007f;
+  }
+}
+
+.winner {
+  animation: 4s linear infinite rainbow;
+}
+
+.correct {
+  color: #fff;
+  background-color: #006400;
+}
+
+.close {
+  color: #fff;
+  background-color: #daa520;
+}
+
+.wrong {
+  color: #fff;
+  background-color: #888;
+}
+
+.invalid {
+  animation: 1s flash;
+}
+
+@keyframes flash {
+  5% {
+    border-color: #dc143c;
+  }
+
+  100% {
+    border-color: #ccc;
+  }
+}
+/*# sourceMappingURL=Words-Master.9e4c6fd2.css.map */

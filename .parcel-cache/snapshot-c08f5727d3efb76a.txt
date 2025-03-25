@@ -1,0 +1,15 @@
+14
+64/home/sherlock/WebDev/Words-Master/dist/Words-Master.c36f364e.js1742879124518646551 0
+42/home/sherlock/WebDev/Words-Master/LICENSE1742780182981170461 0
+44/home/sherlock/WebDev/Words-Master/index.css1742873810050157955 0
+34/home/sherlock/WebDev/Words-Master1742879124505039216 1
+68/home/sherlock/WebDev/Words-Master/dist/Words-Master.3464ddca.js.map1742879124520872475 0
+68/home/sherlock/WebDev/Words-Master/dist/Words-Master.c36f364e.js.map1742879124519039693 0
+45/home/sherlock/WebDev/Words-Master/.gitignore1742780182981046882 0
+45/home/sherlock/WebDev/Words-Master/index.html1742873810050157955 0
+43/home/sherlock/WebDev/Words-Master/index.js1742873810050157955 0
+39/home/sherlock/WebDev/Words-Master/dist1742879124521031972 1
+69/home/sherlock/WebDev/Words-Master/dist/Words-Master.9e4c6fd2.css.map1742879124515147988 0
+65/home/sherlock/WebDev/Words-Master/dist/Words-Master.9e4c6fd2.css1742879124513039488 0
+64/home/sherlock/WebDev/Words-Master/dist/Words-Master.3464ddca.js1742879124520347926 0
+50/home/sherlock/WebDev/Words-Master/dist/index.html1742879124512039454 0
