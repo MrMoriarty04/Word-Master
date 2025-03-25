@@ -62,7 +62,7 @@ body{
   /* visibility hidden means the item is still there and taking up space
      but just not shown. display: none doesn't take up space */
   .hidden {
-    visibility: visible;
+    visibility: hidden;
   }
   
   .info-bar {
@@ -70,7 +70,8 @@ body{
     align-items: center;
     justify-content: center;
   }
-  @keyframes rainbow {
+  
+@keyframes rainbow {
     100%,
     0% {
       color: rgb(255, 0, 0);
@@ -133,7 +134,6 @@ body{
     animation: flash 1s;
   }
   
-  /* flashes red border and then fades back to gray */
   @keyframes flash {
     5% {
       border-color: crimson;

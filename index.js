@@ -1,11 +1,7 @@
 const letters=document.querySelectorAll('.letter-field');
 const loadingDiv=document.querySelector('.info-bar'); 
 const MAX_WORD_LENGTH=5;
-
-
-function isLetter(letter) {
-    return /^[a-zA-Z]$/.test(letter);
-  }
+const Max_ROUND=6;
 
 async function init() {
     let currentGuess=``;
@@ -14,7 +10,10 @@ async function init() {
     const response=await fetch("https://words.dev-apis.com/word-of-the-day?random=1");
     const responseObject= await response.json();
     const word = responseObject.word.toUpperCase();
+    const wordSplit=word.split("");
+    let done = false;
     console.log(word);
+    setLoading(false);
 
         function letterInsert(letter){
             if(currentGuess.length<MAX_WORD_LENGTH)
@@ -27,14 +26,61 @@ async function init() {
         }
         
 
-
-
-        function submit(){
+       async function submit(){
             if(currentGuess.length!== MAX_WORD_LENGTH)
                 return ;
+
+            setLoading(true);
+            const validWord = await sendResponse(currentGuess);
+            setLoading(false);
+
+            if(!validWord){
+                markInvalidWord();
+                return ;
+            }
+
+
+            const guessSplit=currentGuess.split("");
+            const map=makeMap(wordSplit);
+
+
+            for(let i=0;i<MAX_WORD_LENGTH;i++){
+                if(guessSplit[i]===wordSplit[i]){
+                    letters[MAX_WORD_LENGTH*currentRow+i].classList.add("correct");
+                    map[guessSplit[i]]--;
+
+                }
+
+            }
+            if(currentGuess===word){
+                alert("you won!!!");
+                document.querySelector('.header').classList.add("winner");
+                done=true;
+                return;
+            }
+
+
+
+            for(let i=0;i<MAX_WORD_LENGTH;i++){
+                if(guessSplit[i]===wordSplit[i])
+                    continue;
+                else if(wordSplit.includes(guessSplit[i]) && map[guessSplit[i]]>0){
+                    letters[MAX_WORD_LENGTH*currentRow+i].classList.add("close");
+                    map[guessSplit[i]]--;
+                }
+                else
+                letters[MAX_WORD_LENGTH*currentRow+i].classList.add("wrong");
+            }
+
+
             
             currentRow++;
             currentGuess=``;
+
+            if(currentRow==Max_ROUND){
+                alert(`you lose the word was ${word}`);
+                done=true;
+            } 
         }
         
 
@@ -45,9 +91,24 @@ async function init() {
         }
     
 
+        
+        function markInvalidWord(){
 
+            for(let i=0;i<MAX_WORD_LENGTH;i++){
+                letters[MAX_WORD_LENGTH*currentRow+i].classList.remove("invalid");
+                setTimeout(function(){
+                    letters[MAX_WORD_LENGTH*currentRow+i].classList.add("invalid");
+                },10);
+            }
+
+
+        }
 
     document.addEventListener('keydown',function handleKeyPress(event){
+        
+        if(!loadingDiv || done)
+            return;
+
         const action = event.key;
         if(action === 'Enter'){
             submit();
@@ -62,5 +123,39 @@ async function init() {
 
 }
 
+
+function isLetter(letter) {
+    return /^[a-zA-Z]$/.test(letter);
+  }
+
+function setLoading(isLoading){
+
+    loadingDiv.classList.toggle('hidden',!isLoading);
+
+  }
+
+  function makeMap(array) {
+    const obj = {};
+    for (let i = 0; i < array.length; i++) {
+      if (obj[array[i]]) {
+        obj[array[i]]++;
+      } else {
+        obj[array[i]] = 1;
+      }
+    }
+    return obj;
+  }
+  
+
+  async function sendResponse(currentGuess){
+    const sendResponse= await fetch ("https://words.dev-apis.com/validate-word",
+        {   method: "POST",
+            body: JSON.stringify({word:currentGuess}),
+        });
+    const resObj=await sendResponse.json();
+    const validWord=resObj.validWord;
+    
+    return validWord;
+  }
 
 init();
